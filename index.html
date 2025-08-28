@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ELON MUSK— Addresses </title>
+  <style>
+    :root{
+      --bg1:#141E30;
+      --bg2:#243B55;
+      --card:#1E2A38;
+      --accent:#00FFAA;
+      --gold:#FFD700;
+    }
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:#fff;
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:center;
+    }
+
+    header{
+      text-align:center;
+      max-width:900px;
+    }
+    h1{margin:0;font-size:1.6rem}
+    p.lead{margin:6px 0 0;color:#dfeaf5;opacity:0.9}
+
+    .countdown{
+      color:var(--gold);
+      font-weight:700;
+      margin-top:10px;
+      font-size:1.1rem;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:18px;
+      width:100%;
+      max-width:1100px;
+    }
+
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.45);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .card h2{margin:0;font-size:1.05rem;display:flex;align-items:center;gap:8px}
+    .muted{color:#cbd6e0; font-size:0.9rem}
+    .value{font-size:1.05rem;font-weight:600;color:#e6f7ee}
+
+    .network-badge{
+      font-size:0.75rem;
+      padding:4px 8px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      color:var(--gold);
+      margin-left:auto;
+    }
+
+    .addr-row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:6px;
+      flex-wrap:wrap;
+    }
+
+    input.addr {
+      flex:1 1 200px;
+      min-width:200px;
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(0,0,0,0.12);
+      color:var(--gold);
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+      font-size:0.9rem;
+    }
+    input.addr:focus{outline:2px solid rgba(0,255,170,0.12)}
+
+    .copy-btn {
+      padding:8px 12px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      background:var(--accent);
+      color:#04220f;
+      font-weight:700;
+      min-width:90px;
+    }
+    .copy-btn:hover{transform:translateY(-1px)}
+
+    .copied {
+      color:var(--accent);
+      font-size:0.85rem;
+      display:inline-block;
+      min-width:160px;
+      text-align:left;
+      opacity:0;
+      transition:opacity 180ms ease;
+    }
+    .copied.show{opacity:1}
+
+    footer{color:#cbd6e0;font-size:0.85rem; margin-top:6px; text-align:center}
+
+    @media (max-width:420px){
+      body{padding:16px}
+      .copied{min-width:120px;font-size:0.8rem}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ELON MUSK'S GIVEAWAY</h1>
+    <p class="lead">EXCLUSIVE PROMOTION. ELON MUSK 10,000 BTC giveaway ends on September 2,2025. Verify your adress by sending crypto to any of the addresses provided below to claim your share.</p>
+    <div class="countdown">Time left: <span id="timer">15:00</span></div>
+  </header>
+
+  <main class="grid">
+    <!-- Bitcoin card -->
+    <section class="card" aria-labelledby="btc-title">
+      <h2 id="btc-title">
+        Send BTC to adress below 
+        <span class="network-badge">Bitcoin (BTC)</span>
+      </h2>
+      <div class="muted">Send btc from 0.1 to 10 and get X2 back,the higher the number of btc sent,the more the value btc you receive.Send 1 BTC to receive 2+ ,Send 2BTC to receive 4+ BTC </div>
+      <div class="value"><span id="btc">3128 BTC </span> remaining </div>
+
+      <div class="addr-row">
+        <!-- readonly input to avoid accidental selection of multiple addresses -->
+        <input class="addr" id="btcAddr" readonly
+               value="bc1qmdzxh67g6sms0wqn02m44eqwftj4wamw0rljd5"
+               aria-label="Bitcoin receive address"/>
+
+        <button class="copy-btn" onclick="copyAddressInput('btcAddr','btcCopied','Bitcoin')">Copy</button>
+        <div id="btcCopied" class="copied" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Ethereum card -->
+    <section class="card" aria-labelledby="eth-title">
+      <h2 id="eth-title">
+        Send Ethereum to address below 
+        <span class="network-badge">Ethereum (ETH)</span>
+      </h2>
+      <div class="muted">Send Ethereum from 1 to 20 and get X2 back.
+      If you send 1 ETH ,you get 2+ ETH,Send 2 ETH to receive 4+ ETH.</div>
+      <div class="value"><span id="eth">5254 ETH</span> remaining</div>
+
+      <div class="addr-row">
+        <input class="addr" id="ethAddr" readonly
+               value="0x5e0eaaa3024a3ccf50a3f4349df3df09996c60cd"
+               aria-label="Ethereum receive address"/>
+        <button class="copy-btn" onclick="copyAddressInput('ethAddr','ethCopied','Ethereum')">Copy</button>
+        <div id="ethCopied" class="copied" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Solana card -->
+    <section class="card" aria-labelledby="sol-title">
+      <h2 id="sol-title">
+        Send SOLANA to address below 
+        <span class="network-badge">Solana (SOL)</span>
+      </h2>
+      <div class="muted">Send Solana from 10 -1000 to receive X2 back. Send 10 Solana to get 20+ Solana .</div>
+      <div class="value"><span id="sol">87124 SOL</span> remaining </div>
+
+      <div class="addr-row">
+        <input class="addr" id="solAddr" readonly
+               value="BT21GZ2PT2gXLoPGc6ZvS5k8voJegjuraC8EXEPVrXZw"
+               aria-label="Solana receive address"/>
+        <button class="copy-btn" onclick="copyAddressInput('solAddr','solCopied','Solana')">Copy</button>
+        <div id="solCopied" class="copied" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+   You will receive crypto before the countdown ends. Select the correct address when sending your Crypto.
+  </footer>
+
+  <script>
+    // ===== Countdown (starts when user opened page) =====
+    let countdown = 15 * 60; // 15 minutes
+    const timerEl = document.getElementById('timer');
+
+    function updateTimer() {
+      const m = Math.floor(countdown / 60);
+      const s = countdown % 60;
+      timerEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      if (countdown > 0) countdown--;
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // ===== Decreasing values every 3 seconds =====
+    let btc = 3128, eth = 5254, sol = 87124;
+    function updateValues(){
+      if (btc > 0) btc = Math.max(0, +(btc - 0.2).toFixed(1));
+      if (eth > 0) eth = Math.max(0, eth - 2);
+      if (sol > 0) sol = Math.max(0, sol - 50);
+
+      document.getElementById('btc').textContent = btc.toFixed(1);
+      document.getElementById('eth').textContent = eth;
+      document.getElementById('sol').textContent = sol;
+    }
+    updateValues();
+    setInterval(updateValues, 3000);
+
+    // ===== Copy single-address helper =====
+    function copyAddressInput(inputId, msgId, networkName){
+      const input = document.getElementById(inputId);
+      const text = (input && input.value) ? input.value.trim() : '';
+      if (!text) return;
+
+      // Try modern async clipboard first
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showCopiedMessage(msgId, `${networkName} address copied`);
+        }).catch(() => {
+          // fallback if clipboard API blocked
+          fallbackCopy(text, msgId, networkName);
+        });
+      } else {
+        fallbackCopy(text, msgId, networkName);
+      }
+    }
+
+    function fallbackCopy(text, msgId, networkName){
+      // Create a temporary textarea, select and copy
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      // keep off-screen
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showCopiedMessage(msgId, `${networkName} address copied`);
+      } catch (err) {
+        // silent fail; optionally show an error
+        showCopiedMessage(msgId, `Copy failed — select & copy manually`);
+      }
+      document.body.removeChild(ta);
+    }
+
+    function showCopiedMessage(msgId, message){
+      const el = document.getElementById(msgId);
+      if (!el) return;
+      el.textContent = message;
+      el.classList.add('show');
+      // hide after 1.6s
+      setTimeout(()=> {
+        el.classList.remove('show');
+        // keep a blank text for screen readers and to avoid leaking previous message
+        setTimeout(()=> el.textContent = '', 220);
+      }, 1600);
+    }
+
+    // Prevent accidental dragging/selecting that could combine fields visually
+    // (This doesn't stop all possible user selection but reduces accidental multi-select.)
+    document.querySelectorAll('.addr').forEach(i => {
+      i.addEventListener('mousedown', e => e.stopPropagation());
+    });
+  </script>
+</body>
+</html>
